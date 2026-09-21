@@ -61,9 +61,7 @@ class Store:
                 print(
                     f"Sorry we do not have enough items of the product {product.name} in store. We could only deliver {product_in_store.quantity} items.")
             else:
-                total_price += quantity * product_in_store.price
-                product_to_remove = Product(name=product.name, price=product_in_store.price, quantity=quantity)
-                self.remove_product(product_to_remove)
+                total_price += product_in_store.buy(quantity)
 
         return total_price
 
