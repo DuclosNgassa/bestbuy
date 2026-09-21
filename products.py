@@ -48,7 +48,7 @@ class Product:
         self._active = active
 
     def show(self):
-        print(f"Name: {self._name}, Price: {self._price}, Quantity: {self._quantity}")
+        print(f"{self._name}, Price: {self._price}, Quantity: {self._quantity}")
 
     def buy(self, quantity: int) -> float | int:
         if quantity > self._quantity:
