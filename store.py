@@ -7,6 +7,11 @@ class Store:
         self.products = products
 
     def add_product(self, product: Product) -> None:
+        """
+        Adds a product to the store.
+        :param product:
+        :return: None
+        """
         if product not in self.products:
             self.products.append(product)
         else:
@@ -24,15 +29,15 @@ class Store:
         existing_product = self._find_product(product.name)
         if not existing_product:
             raise Exception(f"Product {product.name} not in store")
+
+        index_existing_product = self._get_product_index(product.name)
+        existing_product = self.products[index_existing_product]
+        new_quantity = existing_product.quantity - product.quantity
+        if new_quantity < 0:
+            self.products.remove(product)
         else:
-            index_existing_product = self._get_product_index(product.name)
-            existing_product = self.products[index_existing_product]
-            new_quantity = existing_product.quantity - product.quantity
-            if new_quantity < 0:
-                self.products.remove(product)
-            else:
-                existing_product.quantity = new_quantity
-                self.products[index_existing_product] = existing_product
+            existing_product.quantity = new_quantity
+            self.products[index_existing_product] = existing_product
 
     def get_total_quantity(self) -> int:
         """Returns how many items are in the store in total."""

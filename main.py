@@ -1,6 +1,7 @@
 from products import Product
 from store import Store
 
+
 def setup():
     # setup initial stock of inventory
     product_list = [Product("MacBook Air M2", price=1450, quantity=100),
@@ -35,6 +36,7 @@ def show_menu():
     """
     print(menu)
 
+
 def print_delimiter(c="-", factor: int = 20) -> None:
     print(c * factor)
 
@@ -60,7 +62,7 @@ def show_all_product(store: Store):
     print_delimiter()
     print("Available products:")
     for i, p in enumerate(store.get_all_products()):
-        print(f"{i+1}. ", end="")
+        print(f"{i + 1}. ", end="")
         p.show()
     print_delimiter()
 
